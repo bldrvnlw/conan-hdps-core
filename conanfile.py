@@ -31,7 +31,7 @@ class HdpsCoreConan(ConanFile):
     requires = (
         "qt/5.12.4@bincrafters/stable"
     )
-    
+    print(os.environ)
     access_token = os.environ["BLDRVNLW_TOKEN"]
     validated_url = "https://{0}:{1}@github.com/hdps/core".format("bldrvnlw", access_token)
 
