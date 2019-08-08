@@ -45,6 +45,8 @@ class HdpsCoreConan(ConanFile):
         os.chdir("./{0}".format(self._source_subfolder))
         self.run("git checkout {0}".format(self.branch))
         os.chdir("..")
+        # remove MeanShift for now because the bincrafters qt does not have Qt5WebEngineWidgets
+        tools.replace_in_file("core/CMakeLists.txt", "add_subdirectory(MeanShift)", "")
 
     def _configure_cmake(self):
         cmake = CMake(self)
