@@ -1,3 +1,14 @@
+env:
+   global:
+     - CONAN_REFERENCE: "hdps-core/0.1.0"
+     - CONAN_USERNAME: "bvanlew"
+     - CONAN_LOGIN_USERNAME: "admin"
+     - CONAN_CHANNEL: "stable"
+     - CONAN_UPLOAD: "http://cytosplore.lumc.nl:8081/artifactory/api/conan/conan-local"
+     - CONAN_STABLE_BRANCH_PATTERN: "release/*"
+     - CONAN_UPLOAD_ONLY_WHEN_STABLE: 1 # Will only upload when the branch matches "release/*"
+#     - CONAN_DOCKER_32_IMAGES: 1
+
 linux: &linux
    os: linux
    dist: xenial
@@ -18,8 +29,8 @@ matrix:
         # env: CONAN_GCC_VERSIONS=6 CONAN_DOCKER_IMAGE=conanio/gcc6
       # - <<: *linux
         # env: CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=conanio/gcc7
-      # - <<: *linux
-        # env: CONAN_GCC_VERSIONS=8 CONAN_DOCKER_IMAGE=conanio/gcc8
+      - <<: *linux
+        env: CONAN_GCC_VERSIONS=8 CONAN_DOCKER_IMAGE=conanio/gcc8
       # - <<: *linux
         # env: CONAN_GCC_VERSIONS=9 CONAN_DOCKER_IMAGE=conanio/gcc9
       # - <<: *linux
