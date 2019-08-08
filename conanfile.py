@@ -11,7 +11,7 @@ class HdpsCoreConan(ConanFile):
     # topics can get used for searches, GitHub topics, Bintray tags etc. Add here keywords about the library
     topics = ("conan", "analysis", "n-dimensional", "plugin")
     url = "https://github.com/hdps/core"
-    branch = develop  # should come from profile
+    branch = "develop"  # should come from profile
     author = "B. van Lew <b.van_lew@lumc.nl>"
     license = "MIT"  # Indicates license type of the packaged library; please use SPDX Identifiers https://spdx.org/licenses/
     exports = ["LICENSE.md"]      # Packages the license for the conanfile.py
