@@ -29,7 +29,7 @@ class HdpsCoreConan(ConanFile):
     _build_subfolder = "build_subfolder"
 
     requires = (
-        "qt/5.12.4@bincrafters/stable "
+        "qt/5.12.4@bincrafters/stable"
     )
 
     def config_options(self):
