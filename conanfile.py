@@ -31,6 +31,9 @@ class HdpsCoreConan(ConanFile):
     requires = (
         "qt/5.12.4@bincrafters/stable"
     )
+    
+    access_token = os.environ["BLDRVNLW_TOKEN"]
+    validated_url = "https://{0}:{1}@github.com/hdps/core".format("bldrvnlw", access_token)
 
     def config_options(self):
         if self.settings.os == 'Windows':
@@ -38,7 +41,7 @@ class HdpsCoreConan(ConanFile):
 
     def source(self):
         source_url = self.url
-        self.run("git clone {0}.git".format(self.url))
+        self.run("git clone {0}.git".format(self.validated_url))
         os.chdir("./{0}".format(self._source_subfolder))
         self.run("git checkout {0}".format(self.branch))
         os.chdir("..")
