@@ -37,5 +37,13 @@ install:
   - pip.exe install conan_package_tools bincrafters_package_tools
   - conan user # It creates the conan data directory
 
+notifications:
+  - provider: Slack
+    incoming_webhook: https://hooks.slack.com/services/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
+    channel: hdps
+    on_build_success: false
+    on_build_failure: true
+    on_build_status_changed: true
+    
 test_script:
   - python build.py
