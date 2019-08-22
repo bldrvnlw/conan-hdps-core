@@ -27,11 +27,12 @@ class HdpsCoreConan(ConanFile):
     # Custom attributes for Bincrafters recipe conventions
     _source_subfolder = "core"
     _build_subfolder = "build_subfolder"
+    install_dir = None
 
     requires = (
-        "qt/5.12.4@bincrafters/stable"
+        "qt/5.12.2@bvanlew/stable"
     )
-    print(os.environ)
+    #print(os.environ)
     access_token = os.environ["CONAN_BLDRVNLW_TOKEN"]
     validated_url = "https://{0}:{1}@github.com/hdps/core".format("bldrvnlw", access_token)
 
@@ -45,16 +46,12 @@ class HdpsCoreConan(ConanFile):
         os.chdir("./{0}".format(self._source_subfolder))
         self.run("git checkout {0}".format(self.branch))
         os.chdir("..")
-        # remove MeanShift for now because the bincrafters qt does not have Qt5WebEngineWidgets
-        tools.replace_in_file("core/CMakeLists.txt", "add_subdirectory(MeanShift)", "")
         with open("core/CMakeLists.txt",'r') as viewFileOpen:
             data = viewFileOpen.read()
         print(data)
 
     def _configure_cmake(self):
         cmake = CMake(self)
-        #cmake.definitions["BUILD_TESTS"] = False  # example
-        #cmake.configure(build_folder=self._build_subfolder)
         if self.settings.os == "Windows" and self.options.shared:
             cmake.definitions["CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS"] = True            
         cmake.configure(source_folder="core")
@@ -62,22 +59,20 @@ class HdpsCoreConan(ConanFile):
         return cmake
 
     def build(self):
+        # If the user has no preference in HDPS_INSTALL_DIR simply set the install dir
+        if not os.environ.get('HDPS_INSTALL_DIR', None):
+            os.environ['HDPS_INSTALL_DIR'] = os.path.join(self.build_folder, "install")
+        print('HDPS_INSTALL_DIR: ', os.environ['HDPS_INSTALL_DIR']) 
+        self.install_dir = os.environ['HDPS_INSTALL_DIR']
         cmake = self._configure_cmake()
         cmake.build()
 
     def package(self):
         self.copy(pattern="LICENSE", dst="licenses", src=self._source_subfolder)
-        cmake = self._configure_cmake()
-        cmake.install()
         # If the CMakeLists.txt has a proper install method, the steps below may be redundant
         # If so, you can just remove the lines below
-        include_folder = os.path.join(self._source_subfolder, "include")
-        self.copy(pattern="*", dst="include", src=include_folder)
-        self.copy(pattern="*.dll", dst="bin", keep_path=False)
-        self.copy(pattern="*.lib", dst="lib", keep_path=False)
-        self.copy(pattern="*.a", dst="lib", keep_path=False)
-        self.copy(pattern="*.so*", dst="lib", keep_path=False)
-        self.copy(pattern="*.dylib", dst="lib", keep_path=False)
+        self.copy(pattern="*", src=os.path.join(self.install_dir, 'Release'))
+
 
     def package_info(self):
         self.cpp_info.libs = tools.collect_libs(self)
