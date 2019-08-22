@@ -30,7 +30,8 @@ class HdpsCoreConan(ConanFile):
     install_dir = None
 
     requires = (
-        "qt/5.12.2@bvanlew/stable"
+        "qt/5.12.2@bvanlew/stable",
+        "bzip2/1.0.8@conan/stable"
     )
     #print(os.environ)
     access_token = os.environ["CONAN_BLDRVNLW_TOKEN"]
