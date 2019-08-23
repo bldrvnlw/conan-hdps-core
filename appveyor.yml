@@ -26,6 +26,7 @@ environment:
           CONAN_ARCHS: x86_64
           CONAN_BUILD_TYPES: Release
           CONAN_VISUAL_RUNTIMES: MD
+          CONAN_OPTIONS: "hdps-core:shared=True"
           BUILD_SHARED: True
           
 #        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
@@ -37,13 +38,13 @@ install:
   - pip.exe install conan_package_tools bincrafters_package_tools
   - conan user # It creates the conan data directory
 
-# notifications:
-  # - provider: Slack
-    # incoming_webhook: https://hooks.slack.com/services/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
-    # channel: hdps
-    # on_build_success: false
-    # on_build_failure: true
-    # on_build_status_changed: true
+notifications:
+  - provider: Slack
+    incoming_webhook: https://hooks.slack.com/services/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
+    channel: ci-cd
+    on_build_success: true
+    on_build_failure: true
+    on_build_status_changed: true
     
 test_script:
   - python build.py
