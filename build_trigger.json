@@ -10,12 +10,12 @@
       "author": {
         "name": "Niels Dekker",
         "email": "N.Dekker@lumc.nl",
-        "username": "N-Dekker"
+        "username": "M-Thatcher"
       },
       "committer": {
         "name": "Niels Dekker",
         "email": "N.Dekker@lumc.nl",
-        "username": "N-Dekker"
+        "username": "M-Thatcher"
       },
       "added": [
         "HDPS/src/LogItemModel.cpp",
@@ -46,12 +46,12 @@
     "author": {
       "name": "Niels Dekker",
       "email": "N.Dekker@lumc.nl",
-      "username": "N-Dekker"
+      "username": "M-Thatcher"
     },
     "committer": {
       "name": "Niels Dekker",
       "email": "N.Dekker@lumc.nl",
-      "username": "N-Dekker"
+      "username": "M-Thatcher"
     },
     "added": [
       "HDPS/src/LogItemModel.cpp",
@@ -179,7 +179,7 @@
     "organization": "hdps"
   },
   "pusher": {
-    "name": "N-Dekker",
+    "name": "M-Thatcher",
     "email": "N.Dekker@lumc.nl"
   },
   "organization": {
@@ -197,22 +197,22 @@
     "description": ""
   },
   "sender": {
-    "login": "N-Dekker",
+    "login": "M-Thatcher",
     "id": 27005366,
     "node_id": "MDQ6VXNlcjI3MDA1MzY2",
     "avatar_url": "https://avatars0.githubusercontent.com/u/27005366?v=4",
     "gravatar_id": "",
-    "url": "https://api.github.com/users/N-Dekker",
-    "html_url": "https://github.com/N-Dekker",
-    "followers_url": "https://api.github.com/users/N-Dekker/followers",
-    "following_url": "https://api.github.com/users/N-Dekker/following{/other_user}",
-    "gists_url": "https://api.github.com/users/N-Dekker/gists{/gist_id}",
-    "starred_url": "https://api.github.com/users/N-Dekker/starred{/owner}{/repo}",
-    "subscriptions_url": "https://api.github.com/users/N-Dekker/subscriptions",
-    "organizations_url": "https://api.github.com/users/N-Dekker/orgs",
-    "repos_url": "https://api.github.com/users/N-Dekker/repos",
-    "events_url": "https://api.github.com/users/N-Dekker/events{/privacy}",
-    "received_events_url": "https://api.github.com/users/N-Dekker/received_events",
+    "url": "https://api.github.com/users/M-Thatcher",
+    "html_url": "https://github.com/M-Thatcher",
+    "followers_url": "https://api.github.com/users/M-Thatcher/followers",
+    "following_url": "https://api.github.com/users/M-Thatcher/following{/other_user}",
+    "gists_url": "https://api.github.com/users/M-Thatcher/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/M-Thatcher/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/M-Thatcher/subscriptions",
+    "organizations_url": "https://api.github.com/users/M-Thatcher/orgs",
+    "repos_url": "https://api.github.com/users/M-Thatcher/repos",
+    "events_url": "https://api.github.com/users/M-Thatcher/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/M-Thatcher/received_events",
     "type": "User",
     "site_admin": false
   }
