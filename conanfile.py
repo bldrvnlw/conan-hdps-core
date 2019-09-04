@@ -44,7 +44,7 @@ class HdpsCoreConan(ConanFile):
 
     def _get_commit_sha(self, file_name):
         commit_sha = ""
-        with open(file_name) as json_f
+        with open(file_name) as json_f:
             commit_info = json.load(json_f)
             commit_sha = ["head_commit"]["id"]
         return commit_sha
