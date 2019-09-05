@@ -46,5 +46,25 @@ notifications:
     on_build_failure: false
     on_build_status_changed: false
     
+  - provider: Webhook
+    url: https://api.github.com/hdps/core/statuses/$(APPVEYOR_REPO_COMMIT)
+    method: POST
+    headers: 
+        Authorization:
+            secure: FQyZkOaEbATRwkS61M3rYhRZxRw2s5Mswx9eYjKJ+STcAm3qlm5gHcp8dSe4FKP/
+        Content-Type: application/json
+    body: >-
+        {
+          "state": {{status}},
+          "target_url": "https://ci.appveyor.com/project/bldrvnlw/conan-hdps-core",
+          "description": "Appveyor result!",
+          "context": "baldur/testing"
+        }
+    on_build_success: true
+    on_build_failure: true
+    on_build_status_changed: true        
+        
 test_script:
   - python build.py
+  
+after_test:  
