@@ -50,7 +50,7 @@ notifications:
   - provider: Webhook
     url: https://api.github.com/repos/hdps/core/statuses/{{commitId}}
     method: POST 
-    content-type: application/json
+    content_type: application/json
     headers: 
         Authorization:
             secure: FQyZkOaEbATRwkS61M3rYhRZxRw2s5Mswx9eYjKJ+STcAm3qlm5gHcp8dSe4FKP/  
