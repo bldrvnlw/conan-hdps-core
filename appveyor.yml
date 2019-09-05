@@ -46,14 +46,14 @@ notifications:
     on_build_failure: false
     on_build_status_changed: false
     
+# state: error failure pending success      
   - provider: Webhook
     url: https://api.github.com/repos/hdps/core/statuses/{{commitId}}
-    method: POST    
+    method: POST 
+    content-type: application/json
     headers: 
-        Content-Type: application/json
         Authorization:
-            secure: FQyZkOaEbATRwkS61M3rYhRZxRw2s5Mswx9eYjKJ+STcAm3qlm5gHcp8dSe4FKP/
-# state: error failure pending success        
+            secure: FQyZkOaEbATRwkS61M3rYhRZxRw2s5Mswx9eYjKJ+STcAm3qlm5gHcp8dSe4FKP/  
     body: >-
         {
           "state": "{{#passed}}success{{/passed}}{{#failed}}failure{{/failed}}",
