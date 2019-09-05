@@ -47,7 +47,7 @@ notifications:
     on_build_status_changed: false
     
   - provider: Webhook
-    url: https://api.github.com/hdps/core/statuses/$(APPVEYOR_REPO_COMMIT)
+    url: https://api.github.com/repos/hdps/core/statuses/$(APPVEYOR_REPO_COMMIT)
     method: POST
     headers: 
         Authorization:
