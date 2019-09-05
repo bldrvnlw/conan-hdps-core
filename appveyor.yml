@@ -53,10 +53,11 @@ notifications:
         Authorization:
             secure: FQyZkOaEbATRwkS61M3rYhRZxRw2s5Mswx9eYjKJ+STcAm3qlm5gHcp8dSe4FKP/
         Content-Type: application/json
+# state: error failure pending success        
     body: >-
         {
-          "state": {{status}},
-          "target_url": "https://ci.appveyor.com/project/bldrvnlw/conan-hdps-core/builds/{{buildJobId}},
+          "state": {{#passed}}success{{/passed}}{{#failed}}failure{{/failed}},
+          "target_url": {{buildUrl}},
           "description": "Appveyor result!",
           "context": "baldur/testing"
         }
@@ -68,7 +69,7 @@ notifications:
     to: 
         - b.van_lew@lumc.nl
     subject: Test hdps-core {{status}}
-    message: "URL is https://ci.appveyor.com/project/bldrvnlw/conan-hdps-core/builds/{{buildJobId}}"
+    message: "URL is {{buildUrl}}"
     on_build_success: true
     on_build_failure: true
     on_build_status_changed: true     
