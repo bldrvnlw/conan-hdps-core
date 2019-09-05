@@ -49,9 +49,9 @@ notifications:
   - provider: Webhook
     url: https://api.github.com/repos/hdps/core/statuses/{{commitId}}
     method: POST
+    authorization:
+        secure: FQyZkOaEbATRwkS61M3rYhRZxRw2s5Mswx9eYjKJ+STcAm3qlm5gHcp8dSe4FKP/    
     headers: 
-        Authorization:
-            secure: FQyZkOaEbATRwkS61M3rYhRZxRw2s5Mswx9eYjKJ+STcAm3qlm5gHcp8dSe4FKP/
         Content-Type: application/json
         User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0
 # state: error failure pending success        
