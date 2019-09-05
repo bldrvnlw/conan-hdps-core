@@ -53,10 +53,11 @@ notifications:
         Authorization:
             secure: FQyZkOaEbATRwkS61M3rYhRZxRw2s5Mswx9eYjKJ+STcAm3qlm5gHcp8dSe4FKP/
         Content-Type: application/json
+        User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0
 # state: error failure pending success        
     body: >-
         {
-          "state": {{#passed}}success{{/passed}}{{#failed}}failure{{/failed}},
+          "state": "{{#passed}}success{{/passed}}{{#failed}}failure{{/failed}}",
           "target_url": {{buildUrl}},
           "description": "Appveyor result!",
           "context": "baldur/testing"
@@ -69,7 +70,7 @@ notifications:
     to: 
         - b.van_lew@lumc.nl
     subject: Test hdps-core {{status}}
-    message: "URL is {{buildUrl}}"
+    message: "URL is {{buildUrl}} Commit ID {{commitId}}"
     on_build_success: true
     on_build_failure: true
     on_build_status_changed: true     
