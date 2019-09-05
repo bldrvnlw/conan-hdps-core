@@ -17,7 +17,7 @@ class HdpsCoreConan(ConanFile):
     license = "MIT"  # Indicates license type of the packaged library; please use SPDX Identifiers https://spdx.org/licenses/
     exports = ["LICENSE.md"]      # Packages the license for the conanfile.py
     # Remove following lines if the target lib does not use cmake.
-    exports_sources = ["CMakeLists.txt"]
+    exports_sources = ["CMakeLists.txt", "build_trigger.json"]
     generators = "cmake"
 
     # Options may need to change depending on the packaged library.
