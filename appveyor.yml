@@ -37,9 +37,7 @@ install:
   - pip.exe install conan --upgrade 
   - pip.exe install conan_package_tools bincrafters_package_tools
   - conan user # It creates the conan data directory
-  - ps: Add-AppveyorMessage "This is a test message 0"
-  - ps: Add-AppveyorMessage "This is a test message 2"
-  - ps: Update-AppveyorBuild -CommitId "PietjePuk"
+  - ps: $triggerdata = Get-Content 'build_trigger.json' | Out-String | ConvertFrom-Json; Update-AppveyorBuild -CommitId $triggerdata.head_commit.id
 
 notifications:
   - provider: Slack
@@ -72,7 +70,7 @@ notifications:
     to: 
         - b.van_lew@lumc.nl
     subject: Test hdps-core {{status}}
-    message: "URL is {{buildUrl}} Commit ID {{commitId}}. Index messages -{{messages.0}}-"
+    message: "URL is {{buildUrl}} Commit ID {{commitId}}."
     on_build_success: true
     on_build_failure: true
     on_build_status_changed: true     
