@@ -39,6 +39,7 @@ install:
   - conan user # It creates the conan data directory
   - ps: $triggerdata = Get-Content 'build_trigger.json' | Out-String | ConvertFrom-Json; Update-AppveyorBuild -CommitId $triggerdata.head_commit.id
   - ps: Write-Host $env:APPVEYOR_REPO_COMMIT 
+  - ps: Add-AppveyorMessage '{"commitId": "$env:APPVEYOR_REPO_COMMIT"}'
 
 notifications:
   - provider: Slack
@@ -71,7 +72,7 @@ notifications:
     to: 
         - b.van_lew@lumc.nl
     subject: Test hdps-core {{status}}
-    message: "URL is {{buildUrl}} Commit ID {{commitId}}."
+    message: "URL is {{buildUrl}} Commit ID {{commitId}}. Messages {{messages.0.commitId}}"
     on_build_success: true
     on_build_failure: true
     on_build_status_changed: true     
