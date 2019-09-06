@@ -73,7 +73,7 @@ notifications:
     to: 
         - b.van_lew@lumc.nl
     subject: Test hdps-core {{status}}
-    message: "URL is {{buildUrl}} Commit ID {{commitId}}. Messages {{#jobs}}{{#messages}}{{message.commitId}}{{/messages}}{{#jobs}}"
+    message: "URL is {{buildUrl}} Commit ID {{commitId}}. Messages {{jobs.0.messages.0.message}}"
     on_build_success: true
     on_build_failure: true
     on_build_status_changed: true     
