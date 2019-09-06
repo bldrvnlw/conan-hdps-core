@@ -39,6 +39,7 @@ install:
   - conan user # It creates the conan data directory
   - ps: Add-AppveyorMessage "This is a test message 0"
   - ps: Add-AppveyorMessage "This is a test message 2"
+  - ps: Update-AppveyorBuild -CommitId "PietjePuk"
 
 notifications:
   - provider: Slack
