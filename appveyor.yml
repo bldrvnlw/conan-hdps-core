@@ -61,7 +61,7 @@ notifications:
         {
           "state": "{{#passed}}success{{/passed}}{{#failed}}failure{{/failed}}",
           "target_url": {{buildUrl}},
-          "description": "Appveyor result!",
+          "description": "Appveyor result! {{buildUrl}}",
           "context": "baldur/testing"
         }
     on_build_success: true
@@ -79,6 +79,6 @@ notifications:
     on_build_status_changed: true     
         
 test_script:
-#  - python build.py
+  - python build.py
   
 after_test:  
