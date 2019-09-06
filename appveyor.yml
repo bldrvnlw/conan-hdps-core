@@ -39,7 +39,7 @@ install:
   - conan user # It creates the conan data directory
   - ps: $triggerdata = Get-Content 'build_trigger.json' | Out-String | ConvertFrom-Json; Update-AppveyorBuild -CommitId $triggerdata.head_commit.id
   - ps: Write-Host $env:APPVEYOR_REPO_COMMIT 
-  - ps: Add-AppveyorMessage -join('{"commitId"', ': ', '"', $env:APPVEYOR_REPO_COMMIT, '"}')
+  - ps: Add-AppveyorMessage -join('{"commitId"', ":", ' "', $env:APPVEYOR_REPO_COMMIT, '"}')
 
 notifications:
   - provider: Slack
