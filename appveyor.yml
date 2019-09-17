@@ -4,7 +4,7 @@ environment:
     PYTHON_HOME: "C:\\Python37"
 
     CONAN_REFERENCE: "hdps-core/0.1.0"
-    CONAN_USERNAME: "bvanlew"
+    CONAN_USERNAME: "lkeb"
     CONAN_LOGIN_USERNAME: "admin"
     CONAN_PASSWORD:
         secure: g+1lNdgrCLmyKNf3KvbHSln5A1H7BsVhsMsIbwgo+UU=
@@ -64,7 +64,7 @@ notifications:
           "description": "Appveyor result! {{buildUrl}}",
           "context": "baldur/testing"
         }
-    on_build_success: true
+    on_build_success: always
     on_build_failure: true
     on_build_status_changed: true 
 
