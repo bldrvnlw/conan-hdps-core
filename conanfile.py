@@ -39,6 +39,12 @@ class HdpsCoreConan(ConanFile):
     access_token = os.environ["CONAN_BLDRVNLW_TOKEN"]
     validated_url = "https://{0}:{1}@github.com/hdps/core".format("bldrvnlw", access_token)
 
+    def system_requirements(self):
+        if tools.os_info.is_linux:
+            if tools.os_info.with_apt:
+                installer = tools.SystemPackageTool()
+                installer.install('mesa-common-dev')
+                
     def config_options(self):
         if self.settings.os == 'Windows':
             del self.options.fPIC
