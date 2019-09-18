@@ -7,5 +7,7 @@ import os
 
 if __name__ == "__main__":
 
-    builder = build_template_default.get_builder()  
+    builder = build_template_default.get_builder() 
+    for b in builder.items:
+        b.settings["compiler.cppstd"] = 14    
     builder.run()
