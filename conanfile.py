@@ -50,8 +50,7 @@ class HdpsCoreConan(ConanFile):
                 installer.install('libxcursor-dev')
                 installer.install('libxi-dev')
                 installer.install('libnss3-dev')
-                installer.install('libplc4')
-                installer.install('libnspr4')
+                installer.install('libnspr4-dev')
                 installer.install('libfreetype_dev')
                 
     def config_options(self):
