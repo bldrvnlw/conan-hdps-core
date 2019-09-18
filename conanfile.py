@@ -38,6 +38,7 @@ class HdpsCoreConan(ConanFile):
     #print(os.environ)
     access_token = os.environ["CONAN_BLDRVNLW_TOKEN"]
     validated_url = "https://{0}:{1}@github.com/hdps/core".format("bldrvnlw", access_token)
+# "libssl-dev", "libxcursor-dev", "libxcomposite-dev", "libxdamage-dev", "libxrandr-dev", "libdbus-1-dev", "libfontconfig1-dev", "libcap-dev", "libxtst-dev", "libpulse-dev", "libudev-dev", "libpci-dev", "libnss3-dev", "libasound2-dev", "libxss-dev", "libegl1-mesa-dev", "gperf", "bison"])       
 
     def system_requirements(self):
         if tools.os_info.is_linux:
@@ -45,6 +46,9 @@ class HdpsCoreConan(ConanFile):
                 installer = tools.SystemPackageTool()
                 installer.install('mesa-common-dev')
                 installer.install('libgl1-mesa-dev')
+                installer.install('libxcomposite-dev')
+                installer.install('libxcursor-dev')
+                installer.install('libxi-dev')
                 
     def config_options(self):
         if self.settings.os == 'Windows':
