@@ -21,7 +21,7 @@ class HdpsCoreConan(ConanFile):
     generators = "cmake"
 
     # Options may need to change depending on the packaged library.
-    settings = "os", "arch", "compiler", "build_type"
+    settings = "os", "arch", "compiler", "cppstd", "build_type"
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": False, "fPIC": True}
 
@@ -48,6 +48,7 @@ class HdpsCoreConan(ConanFile):
     def config_options(self):
         if self.settings.os == 'Windows':
             del self.options.fPIC
+        self.settings.cppstd = 14
 
     def _get_commit_sha(self, file_name):
         commit_sha = ""
