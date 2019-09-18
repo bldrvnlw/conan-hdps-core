@@ -51,7 +51,7 @@ class HdpsCoreConan(ConanFile):
                 installer.install('libxi-dev')
                 installer.install('libnss3-dev')
                 installer.install('libnspr4-dev')
-                installer.install('libfreetype_dev')
+                installer.install('libfreetype6-dev')
                 
     def config_options(self):
         if self.settings.os == 'Windows':
