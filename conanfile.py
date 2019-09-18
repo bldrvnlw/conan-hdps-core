@@ -48,7 +48,6 @@ class HdpsCoreConan(ConanFile):
     def config_options(self):
         if self.settings.os == 'Windows':
             del self.options.fPIC
-        self.settings.cppstd = 14
 
     def _get_commit_sha(self, file_name):
         commit_sha = ""
