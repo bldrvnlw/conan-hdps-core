@@ -70,7 +70,10 @@ class HdpsCoreConan(ConanFile):
     def _configure_cmake(self):
         cmake = CMake(self)
         if self.settings.os == "Windows" and self.options.shared:
-            cmake.definitions["CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS"] = True            
+            cmake.definitions["CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS"] = True
+        if self.settings.os == "Linux":
+            cmake.definitions["CMAKE_CXX_STANDARD"] = 14
+            cmake.definitions["CMAKE_CXX_STANDARD_REQUIRED"] = "ON"
         cmake.configure(source_folder="core")
         cmake.verbose = True
         return cmake
