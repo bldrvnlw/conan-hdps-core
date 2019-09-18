@@ -20,8 +20,8 @@ class HdpsCoreConan(ConanFile):
     exports_sources = ["CMakeLists.txt", "build_trigger.json"]
     generators = "cmake"
 
-    # Options may need to change depending on the packaged library.
-    settings = "os", "arch", "compiler", "cppstd", "build_type"
+    # Options may need to change depending on the packaged library
+    settings = {"os": None, "build_type": None, "compiler": None, "arch": None, "compiler.cppstd": 14,}
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": False, "fPIC": True}
 
