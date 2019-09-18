@@ -44,7 +44,7 @@ class HdpsCoreConan(ConanFile):
             if tools.os_info.with_apt:
                 installer = tools.SystemPackageTool()
                 installer.install('mesa-common-dev')
-                installer.install('libGL')
+                installer.install('libgl1-mesa-dev')
                 
     def config_options(self):
         if self.settings.os == 'Windows':
