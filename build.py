@@ -4,10 +4,11 @@
 
 from bincrafters import build_template_default
 import os
-
+def _is_not_shared(build):
+    return build.options['hdps-core:shared'] == False
+    
 if __name__ == "__main__":
 
     builder = build_template_default.get_builder() 
-    #for b in builder.items:
-    #    b.settings["compiler.cppstd"] = 14    
+    builder.remove_build_if(_is_not_shared)  
     builder.run()
