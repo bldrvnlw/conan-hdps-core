@@ -25,19 +25,19 @@ matrix:
       - <<: *linux
         env: 
             - CONAN_GCC_VERSIONS=9 
-              CONAN_DOCKER_IMAGE=conanio/gcc9
-              CONAN_BUILD_TYPES=Release
-              CONAN_ARCHS=x86_64
+            - CONAN_DOCKER_IMAGE=conanio/gcc9
+            - CONAN_BUILD_TYPES=Release
+            - CONAN_ARCHS=x86_64
               # CONAN_OPTIONS="hdps-core:shared=True"
-              BUILD_SHARED=True
+            - BUILD_SHARED=True
       - <<: *osx
         osx_image: xcode10.3
         env: 
             - CONAN_APPLE_CLANG_VERSIONS=10.0
-              CONAN_BUILD_TYPES=Release
-              CONAN_ARCHS=x86_64
+            - CONAN_BUILD_TYPES=Release
+            - CONAN_ARCHS=x86_64
               # CONAN_OPTIONS="hdps-core:shared=True"
-              BUILD_SHARED=True
+            - BUILD_SHARED=True
 
 install:
   - chmod +x .ci/install.sh
