@@ -58,7 +58,8 @@ class HdpsCoreConan(ConanFile):
                 installer.install('libdbus-1-dev')
         if tools.os_info.is_macos: 
             installer = tools.SystemPackageTool()
-            installer.install('llvm')        
+            installer.install('llvm')     
+            installer.install('libomp')              
                 
     def config_options(self):
         if self.settings.os == 'Windows':
