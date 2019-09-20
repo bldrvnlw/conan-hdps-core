@@ -57,6 +57,7 @@ class HdpsCoreConan(ConanFile):
                 installer.install('libasound2-dev')
                 installer.install('libdbus-1-dev')
         if tools.os_info.is_macos: 
+            installer = tools.SystemPackageTool()
             installer.install('libomp')        
                 
     def config_options(self):
