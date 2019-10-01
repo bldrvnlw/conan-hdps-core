@@ -5,7 +5,6 @@ env:
      - CONAN_CHANNEL="stable"     
      - CONAN_LOGIN_USERNAME="admin"
      - CONAN_PASSWORD=$CONAN_PASSWORD_SECRET  
-     - CONAN_BLDRVNLW_TOKEN=$CONAN_GITACCESS_TOKEN
      - CONAN_UPLOAD="http://cytosplore.lumc.nl:8081/artifactory/api/conan/conan-local"
      - CONAN_STABLE_BRANCH_PATTERN="master"
      - CONAN_SKIP_CHECK_CREDENTIALS=1
@@ -41,12 +40,12 @@ install:
   - ./.ci/install.sh
 
 script:
-  - python -c "from citools.githubtools import set_build_status, State; set_build_status('build_trigger.json', 'CONAN_BLDRVNLW_TOKEN', '$TRAVIS_BUILD_WEB_URL', 'Travis', State.pending)"
+  - python -c "from citools.githubtools import set_build_status, State; set_build_status('build_trigger.json', '$CONAN_BLDRVNLW_TOKEN', '$TRAVIS_BUILD_WEB_URL', 'Travis', State.pending)"
   - chmod +x .ci/run.sh
   - ./.ci/run.sh
   
 after_success:
-  - python -c "from citools.githubtools import set_build_status, State; set_build_status('build_trigger.json', 'CONAN_BLDRVNLW_TOKEN', '$TRAVIS_BUILD_WEB_URL', 'Travis', State.success)"
+  - python -c "from citools.githubtools import set_build_status, State; set_build_status('build_trigger.json', '$CONAN_BLDRVNLW_TOKEN', '$TRAVIS_BUILD_WEB_URL', 'Travis', State.success)"
   
 after_failure:  
-  - python -c "from citools.githubtools import set_build_status, State; set_build_status('build_trigger.json', 'CONAN_BLDRVNLW_TOKEN', '$TRAVIS_BUILD_WEB_URL', 'Travis', State.failure)"
+  - python -c "from citools.githubtools import set_build_status, State; set_build_status('build_trigger.json', '$CONAN_BLDRVNLW_TOKEN', '$TRAVIS_BUILD_WEB_URL', 'Travis', State.failure)"
