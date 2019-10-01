@@ -41,12 +41,12 @@ install:
   - ./.ci/install.sh
 
 script:
-  - python -c "from githubtools import set_build_status, State; set_build_status('build_trigger.json', 'CONAN_BLDRVNLW_TOKEN', '$TRAVIS_BUILD_WEB_URL', 'Travis', State.pending)"
+  - python -c "from citools.githubtools import set_build_status, State; set_build_status('build_trigger.json', 'CONAN_BLDRVNLW_TOKEN', '$TRAVIS_BUILD_WEB_URL', 'Travis', State.pending)"
   - chmod +x .ci/run.sh
   - ./.ci/run.sh
   
 after_success:
-  - python -c "from githubtools import set_build_status, State; set_build_status('build_trigger.json', 'CONAN_BLDRVNLW_TOKEN', '$TRAVIS_BUILD_WEB_URL', 'Travis', State.success)"
+  - python -c "from citools.githubtools import set_build_status, State; set_build_status('build_trigger.json', 'CONAN_BLDRVNLW_TOKEN', '$TRAVIS_BUILD_WEB_URL', 'Travis', State.success)"
   
 after_failure:  
-  - python -c "from githubtools import set_build_status, State; set_build_status('build_trigger.json', 'CONAN_BLDRVNLW_TOKEN', '$TRAVIS_BUILD_WEB_URL', 'Travis', State.failure)"
+  - python -c "from citools.githubtools import set_build_status, State; set_build_status('build_trigger.json', 'CONAN_BLDRVNLW_TOKEN', '$TRAVIS_BUILD_WEB_URL', 'Travis', State.failure)"
