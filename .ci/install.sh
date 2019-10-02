@@ -18,7 +18,6 @@ if [[ "$(uname -s)" == 'Darwin' ]]; then
     pyenv activate conan
 fi
 # Add the citools to be able to set statuses on the original repo
-pip install pygithub
 pip install git+https://github.com/bldrvnlw/citools.git#egg=citools
 pip install conan --upgrade
 pip install conan_package_tools bincrafters_package_tools
