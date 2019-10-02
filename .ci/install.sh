@@ -24,4 +24,8 @@ pip install conan_package_tools bincrafters_package_tools
 pip install pygithub
 pip install git+https://github.com/bldrvnlw/citools.git#egg=citools
 
+if [[ "$(uname -s)" == 'Darwin' ]]; then
+    pyenv rehash
+fi
+
 conan user
