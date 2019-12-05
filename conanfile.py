@@ -100,7 +100,6 @@ class HdpsCoreConan(ConanFile):
         print('HDPS_INSTALL_DIR: ', os.environ['HDPS_INSTALL_DIR']) 
         self.install_dir = os.environ['HDPS_INSTALL_DIR']
         cmake = self._configure_cmake()
-        print('CMake standard: ', cmake.definitions["CMAKE_CXX_STANDARD"])
         cmake.build()
 
     def package(self):
