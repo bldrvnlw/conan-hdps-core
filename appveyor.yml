@@ -43,7 +43,7 @@ install:
   - ps: Add-AppveyorMessage $env:APPVEYOR_REPO_COMMIT
   - set PATH=%PYTHON_HOME%;%PYTHON_HOME%/Scripts/;%PATH%
   - pip install git+https://github.com/bldrvnlw/citools.git#egg=citools
-  - pip install cmake>=%MINIMUM_CMAKE_VERSION%
+  - pip install -Iv cmake>=%MINIMUM_CMAKE_VERSION%
   - for /f "delims=" %%i IN ('where cmake') do set CONAN_CMAKE_PROGRAM=^"%%i^"
   - echo cmake path is %CONAN_CMAKE_PROGRAM%
   - pip.exe install conan --upgrade 
