@@ -50,7 +50,7 @@ install:
   - cmd: python -m pip install -IUv cmake>=%MINIMUM_CMAKE_VERSION%
   - cmd: cmake --version
   - cmd: where cmake
-  - cmd: for /f "delims=" %%i IN ('where cmake') do set CONAN_CMAKE_PROGRAM=^"%%i^"
+  - cmd: for /f "tokens=1" "delims=" %%i IN ('where cmake') do set CONAN_CMAKE_PROGRAM=^"%%i^"
   - cmd: echo cmake path is %CONAN_CMAKE_PROGRAM%
   - cmd: python -m pip install -U conan --upgrade 
   - cmd: python -m pip install -U conan_package_tools bincrafters_package_tools
