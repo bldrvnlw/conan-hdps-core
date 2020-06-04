@@ -41,17 +41,18 @@ install:
   - ps: $triggerdata = Get-Content 'build_trigger.json' | Out-String | ConvertFrom-Json; Update-AppveyorBuild -CommitId $triggerdata.head_commit.id
   - ps: Write-Host $env:APPVEYOR_REPO_COMMIT 
   - ps: Add-AppveyorMessage $env:APPVEYOR_REPO_COMMIT
-  - "set PATH=%PYTHON_HOME%;%PYTHON_HOME%\\Scripts;%PATH%"
-  - echo Path is %PATH%
-  - python -m ensurepip --upgrade
-  - python -m pip install -U git+https://github.com/bldrvnlw/citools.git#egg=citools
-  - echo cmake version setting is %MINIMUM_CMAKE_VERSION%
-  - python -m pip install -IUv cmake>=%MINIMUM_CMAKE_VERSION%
-  - for /f "delims=" %%i IN ('where cmake') do set CONAN_CMAKE_PROGRAM=^"%%i^"
-  - echo cmake path is %CONAN_CMAKE_PROGRAM%
-  - python -m pip install -U conan --upgrade 
-  - python -m pip install -U conan_package_tools bincrafters_package_tools
-  - conan user # It creates the conan data directory
+  - cmd: set PATH=%PYTHON_HOME%;%PYTHON_HOME%/Scripts;%PATH%
+  - cmd: echo Path is %PATH%
+  - cmd: python -m ensurepip --upgrade
+  - cmd: python -m pip install -U git+https://github.com/bldrvnlw/citools.git#egg=citools
+  - cmd: echo cmake version setting is %MINIMUM_CMAKE_VERSION%
+  - cmd: python -m pip install -IUv cmake>=%MINIMUM_CMAKE_VERSION%
+  - cmd: cmake --version
+  - cmd: for /f "delims=" %%i IN ('where cmake') do set CONAN_CMAKE_PROGRAM=^"%%i^"
+  - cmd: echo cmake path is %CONAN_CMAKE_PROGRAM%
+  - cmd: python -m pip install -U conan --upgrade 
+  - cmd: python -m pip install -U conan_package_tools bincrafters_package_tools
+  - cmd: conan user # It creates the conan data directory
 
 notifications:   
   - provider: Email
@@ -65,11 +66,11 @@ notifications:
     on_build_status_changed: true     
         
 build_script:
-  - python -c "from citools.githubtools import set_build_status, State; set_build_status('build_trigger.json', '%CONAN_BLDRVNLW_TOKEN%', '%APPVEYOR_BUILD_URL%', 'Appveyor', State.pending)"
-  - python build.py
+  - cmd: python -c "from citools.githubtools import set_build_status, State; set_build_status('build_trigger.json', '%CONAN_BLDRVNLW_TOKEN%', '%APPVEYOR_BUILD_URL%', 'Appveyor', State.pending)"
+  - cmd: python build.py
 
 on_success:
-  - python -c "from citools.githubtools import set_build_status, State; set_build_status('build_trigger.json', '%CONAN_BLDRVNLW_TOKEN%', '%APPVEYOR_BUILD_URL%', 'Appveyor', State.success)"
+  - cmd: python -c "from citools.githubtools import set_build_status, State; set_build_status('build_trigger.json', '%CONAN_BLDRVNLW_TOKEN%', '%APPVEYOR_BUILD_URL%', 'Appveyor', State.success)"
   
 on_failure:
-  -  python -c "from citools.githubtools import set_build_status, State; set_build_status('build_trigger.json', '%CONAN_BLDRVNLW_TOKEN%', '%$APPVEYOR_BUILD_URL%', 'Appveyor', State.failure)"
+  -  cmd: python -c "from citools.githubtools import set_build_status, State; set_build_status('build_trigger.json', '%CONAN_BLDRVNLW_TOKEN%', '%$APPVEYOR_BUILD_URL%', 'Appveyor', State.failure)"
