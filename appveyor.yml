@@ -41,14 +41,15 @@ install:
   - ps: $triggerdata = Get-Content 'build_trigger.json' | Out-String | ConvertFrom-Json; Update-AppveyorBuild -CommitId $triggerdata.head_commit.id
   - ps: Write-Host $env:APPVEYOR_REPO_COMMIT 
   - ps: Add-AppveyorMessage $env:APPVEYOR_REPO_COMMIT
-  - set PATH=%PYTHON_HOME%;%PYTHON_HOME%/Scripts/;%PATH%
-  - pip install git+https://github.com/bldrvnlw/citools.git#egg=citools
+  - set PATH=%PYTHON_HOME%;%PYTHON_HOME%\\Scripts;%PATH%
+  - python -m ensurepip
+  - python -m pip install -U git+https://github.com/bldrvnlw/citools.git#egg=citools
   - echo cmake version setting is %MINIMUM_CMAKE_VERSION%
-  - pip install -Iv cmake>=%MINIMUM_CMAKE_VERSION%
+  - python -m pip install -IUv cmake>=%MINIMUM_CMAKE_VERSION%
   - for /f "delims=" %%i IN ('where cmake') do set CONAN_CMAKE_PROGRAM=^"%%i^"
   - echo cmake path is %CONAN_CMAKE_PROGRAM%
-  - pip.exe install conan --upgrade 
-  - pip.exe install conan_package_tools bincrafters_package_tools
+  - python -m pip install -U conan --upgrade 
+  - python -m pip install -U conan_package_tools bincrafters_package_tools
   - conan user # It creates the conan data directory
 
 notifications:   
