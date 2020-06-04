@@ -41,8 +41,9 @@ install:
   - ps: $triggerdata = Get-Content 'build_trigger.json' | Out-String | ConvertFrom-Json; Update-AppveyorBuild -CommitId $triggerdata.head_commit.id
   - ps: Write-Host $env:APPVEYOR_REPO_COMMIT 
   - ps: Add-AppveyorMessage $env:APPVEYOR_REPO_COMMIT
-  - set PATH=%PYTHON_HOME%;%PYTHON_HOME%\\Scripts;%PATH%
-  - python -m ensurepip
+  - "set PATH=%PYTHON_HOME%;%PYTHON_HOME%\\Scripts;%PATH%"
+  - echo Path is %PATH%
+  - python -m ensurepip --upgrade
   - python -m pip install -U git+https://github.com/bldrvnlw/citools.git#egg=citools
   - echo cmake version setting is %MINIMUM_CMAKE_VERSION%
   - python -m pip install -IUv cmake>=%MINIMUM_CMAKE_VERSION%
