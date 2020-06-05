@@ -57,9 +57,12 @@ class HdpsCoreConan(ConanFile):
                 installer.install('libxtst-dev')
                 installer.install('libasound2-dev')
                 installer.install('libdbus-1-dev')
-                min_cmake_version = os.environ.get("CONAN_MINIMUM_CMAKE_VERSION")
+                min_cmake_version = os.environ.get('CONAN_MINIMUM_CMAKE_VERSION')
                 if min_cmake_version is not None:
                     subprocess.run(f"pip3 install --user cmake>={min_cmake_version}".split())
+                    result = subprocess.run("which cmake".split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    os.environ['CONAN_CMAKE_PROGRAM'] = result.stdout.decode('utf-8').rstrip()
+                    print(f'Cmake at {os.environ["CONAN_CMAKE_PROGRAM"]}')
         if tools.os_info.is_macos: 
             installer = tools.SystemPackageTool()    
             installer.install('libomp')              
