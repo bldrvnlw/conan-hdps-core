@@ -60,6 +60,7 @@ class HdpsCoreConan(ConanFile):
                 min_cmake_version = os.environ.get('CONAN_MINIMUM_CMAKE_VERSION')
                 if min_cmake_version is not None:
                     subprocess.run(f"pip3 install --user cmake>={min_cmake_version}".split())
+                    print('Path is: ', os.environ['PATH'])
                     result = subprocess.run("which cmake".split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                     os.environ['CONAN_CMAKE_PROGRAM'] = result.stdout.decode('utf-8').rstrip()
                     print(f'Cmake at {os.environ["CONAN_CMAKE_PROGRAM"]}')
