@@ -19,7 +19,7 @@ if [[ "$(uname -s)" == 'Darwin' ]]; then
 fi
 # Add the citools to be able to set statuses on the original repo
 pip install git+https://github.com/bldrvnlw/citools.git#egg=citools
-pip install cmake>=$MINIMUM_CMAKE_VERSION
+pip install cmake>=$CONAN_MINIMUM_CMAKE_VERSION
 pip install conan --upgrade
 pip install conan_package_tools bincrafters_package_tools
 
