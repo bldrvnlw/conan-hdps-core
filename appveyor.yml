@@ -46,11 +46,12 @@ install:
   - cmd: python -m ensurepip --upgrade
   - cmd: python -m pip install -U git+https://github.com/bldrvnlw/citools.git#egg=citools
   - cmd: echo cmake version setting is %MINIMUM_CMAKE_VERSION%
-  - cmd: where cmake
+  - cmd: where cmaket
   - cmd: python -m pip install -IUv cmake>=%MINIMUM_CMAKE_VERSION%
   - cmd: cmake --version
   - cmd: where cmake
-  - cmd: for /f "tokens=1 delims=" %%i IN ('where cmake') do set CONAN_CMAKE_PROGRAM=^"%%i^"
+  - cmd: where cmake > _temppath.txt
+  - cmd: set /p CONAN_CMAKE_PROGRAM=<_temppath.txt
   - cmd: echo cmake path is %CONAN_CMAKE_PROGRAM%
   - cmd: python -m pip install -U conan --upgrade 
   - cmd: python -m pip install -U conan_package_tools bincrafters_package_tools
