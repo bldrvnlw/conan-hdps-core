@@ -84,9 +84,9 @@ class HdpsCoreConan(ConanFile):
         commit_sha = self._get_commit_sha("build_trigger.json")
         self.run("git clone {0}.git".format(self.validated_url))
         os.chdir("./{0}".format(self._source_subfolder))
+        self.run("git submodule init && git submodule sync && git submodule update")                          
         self.run("git checkout {0}".format(commit_sha))
         os.chdir("..")
-        self.run("git submodule init && git submodule sync && git submodule update")
         with open("core/CMakeLists.txt",'r') as viewFileOpen:
             data = viewFileOpen.read()
         print(data)
