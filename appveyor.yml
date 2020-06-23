@@ -56,6 +56,7 @@ install:
   - cmd: python -m pip install -U conan --upgrade 
   - cmd: python -m pip install -U conan_package_tools bincrafters_package_tools
   - cmd: conan user # It creates the conan data directory
+  - cmd: git submodule update --init --recursive
 
 notifications:   
   - provider: Email
