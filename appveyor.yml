@@ -57,7 +57,7 @@ install:
   - cmd: python -m pip install -U conan_package_tools bincrafters_package_tools
   - cmd: conan user # It creates the conan data directory
 # append certificate chain for lkeb-artifactory to conan pem - conanuses old root list (no USERTrust RSA)
-  - ps: $CONANPEM = Join-Path -Path ~ -ChildPath .conan\cacert.pem; Get-Content $CONANPEM, lkeb-artifactory-lumc-nl-chain.pem.txt | Set-Content $CONANPEM
+  - ps: $CONANPEM = Join-Path -Path ~ -ChildPath .conan\cacert.pem; $concat = Get-Content $CONANPEM, lkeb-artifactory-lumc-nl-chain.pem.txt; $concat | Set-Content $CONANPEM
   - cmd: git submodule update --init --recursive
 
 notifications:   
